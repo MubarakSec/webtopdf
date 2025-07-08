@@ -29,8 +29,8 @@ This repository includes **two standalone Python GUI applications** built with `
 
 ## 📷 Screenshots
 
-![URL Extractor]<img src="images/url_extractor_screenshot2.png" width="600"/>
-![PDF Converter]<img src="images/pdf_converter_screenshot.png" width="600"/>
+<img src="images/url_extractor_screenshot2.png" width="300"/>
+<img src="images/pdf_converter_screenshot.png" width="600"/>
 
 ---
 
