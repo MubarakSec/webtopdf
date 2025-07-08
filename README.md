@@ -1,8 +1,3 @@
-Your README content is solid, but it's **not properly formatted for Markdown**, and you left out the closing code blocks. It’ll render poorly on GitHub.
-
-Here’s the **fixed and cleaned up version**, fully copy-pasteable into your `README.md` file:
-
----
 
 
 # 🧰 GUI Toolkit: URL Extractor & Webpage to PDF Converter
