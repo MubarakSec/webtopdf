@@ -1,103 +1,112 @@
-# Web to PDF Toolkit
+# Web to PDF Toolkit - Pro 🚀
 
-A single, modern desktop app that extracts URLs from web pages and converts them to PDFs. Built with `tkinter` for a lightweight GUI and Playwright for reliable rendering.
+A high-performance, locally-hosted desktop application designed to extract links from webpages and batch-convert them into high-fidelity PDFs. Built with modern UI/UX principles and powered by **Playwright**, this toolkit effortlessly handles dynamic, JavaScript-heavy Single Page Applications (SPAs).
 
-## Highlights
-- One app with two workflows: extract links and convert pages to PDFs.
-- Send selected links directly from the extractor to the converter queue.
-- Headless or visible browser mode.
-- Retry handling with partial saves on failures.
-- Clipboard paste, import/export, and deduping.
+---
 
-## Features
-- URL extraction with optional same-domain filtering.
-- Multi-select results, copy, save, or push to converter.
-- Batch PDF conversion with progress and log output.
-- Output folder auto-open on completion (optional).
+## 📸 Interface Overview
 
-## Screenshots
-Screenshots are being updated to reflect the new unified UI.
+### 1. Advanced Link Extractor
+Scrape, filter, and deduplicate links from any webpage instantly. 
+![Link Extractor](images/url_extractor_screenshot2.png)
 
-<img src="images/url_extractor_screenshot2.png" width="500"/>
-<img src="images/pdf_converter_screenshot.png" width="500"/>
+### 2. High-Fidelity PDF Converter
+Queue multiple URLs for batch conversion with real-time logs and progress tracking.
+![PDF Converter](images/pdf_converter_screenshot.png)
 
-## Installation
+---
 
-1. Clone the repository
+## 🌟 Key Features
+
+*   **Intelligent Link Extraction:** 
+    *   Targeted scraping powered by `BeautifulSoup`.
+    *   Automated "Same Domain" filtering and URL deduplication.
+    *   Smart fragment stripping and protocol auto-correction.
+    *   Interactive scrollable selection with one-click transfer to the conversion queue.
+
+*   **Industrial-Grade PDF Rendering:**
+    *   Utilizes a headless **Chromium browser via Playwright** to ensure exact visual replication, even for modern frameworks (React, Vue, Angular).
+    *   Built-in retry mechanisms and timeouts for unstable networks.
+    *   *Failsafe rendering:* Automatically attempts to save partial PDFs if the primary rendering fails.
+
+*   **Modern, Agent-Ready UI/UX:**
+    *   Sleek interface constructed with `CustomTkinter`.
+    *   Full support for **Light, Dark, and System appearance modes**.
+    *   Thread-safe architecture ensures the UI remains responsive during heavy batch operations.
+    *   Comprehensive execution logs and real-time progress bars.
+
+---
+
+## 🛠️ Architecture
+
+The project has been rigorously refactored to follow a strictly decoupled, modular architecture:
+
+```text
+webtopdf/
+├── main.py               # Unified application entry point
+├── requirements.txt      # Dependency manifest
+├── .venv/                # Isolated virtual environment (ignored in git)
+├── images/               # Visual documentation assets
+└── src/
+    ├── core/             # Headless business logic (extractor.py, converter.py)
+    ├── gui/              # CustomTkinter interface (tabs, components, app.py)
+    └── utils/            # OS-level helpers and sanitization
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Python 3.10+
+*   Git
+
+### Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/webtopdf.git
+   cd webtopdf
+   ```
+
+2. **Initialize a Virtual Environment:**
+   *(Recommended to prevent system-level package conflicts)*
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
+
+3. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Setup Rendering Engine:**
+   Install the necessary Playwright browser binaries and system dependencies:
+   ```bash
+   playwright install chromium
+   playwright install-deps chromium
+   ```
+
+---
+
+## 💻 Usage
+
+Ensure your virtual environment is active, then launch the application:
 
 ```bash
-git clone https://github.com/yourusername/webtopdf.git
-cd webtopdf
+# Launch the main application (Defaults to Extractor)
+python main.py
+
+# Launch directly into the PDF Converter tab
+python main.py --tab convert
 ```
 
-2. Create and activate a virtual environment
+---
 
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
+## 🤝 Contributing
 
-3. Install dependencies
+Contributions are welcome! Since the GUI is entirely decoupled from the business logic (`src/core`), developers can easily integrate the extraction and conversion classes into web APIs, CLIs, or alternate interfaces without modifying the core behavior.
 
-```bash
-pip install -r requirements.txt
-python -m playwright install
-```
-
-## Usage
-
-Run the unified app:
-
-```bash
-python app.py
-```
-
-Optional legacy entry points (open a specific tab):
-
-```bash
-python url_extractor.py
-python webpage_to_pdf.py
-```
-
-### Extract URLs
-1. Enter a webpage URL and select your filters.
-2. Click "Extract Links".
-3. Select links and copy, save, or send to the converter.
-
-### Convert to PDF
-1. Add URLs manually, paste, or import a `.txt` file.
-2. Choose an output directory.
-3. Configure headless mode and retries.
-4. Click "Start Conversion".
-
-## Quality (ISO/IEC 25010 Focus)
-- Functional suitability: clear separation of extract vs. convert workflows.
-- Usability: guided layout, consistent actions, and status feedback.
-- Reliability: retries, partial saves, and defensive error handling.
-- Performance efficiency: background workers keep the UI responsive.
-- Maintainability: unified app structure and shared utilities.
-- Portability: runs on Windows, macOS, and Linux with Python + Playwright.
-
-## Project Structure
-```
-.
-├── app.py               # Unified GUI app
-├── url_extractor.py     # Optional launcher (opens Extract tab)
-├── webpage_to_pdf.py    # Optional launcher (opens Convert tab)
-├── requirements.txt
-├── images/
-└── README.md
-```
-
-## Notes
-- Make sure Playwright browsers are installed:
-  `python -m playwright install`
-- Some pages may require authentication or block headless browsers.
-- Filenames are sanitized and truncated to avoid OS path issues.
-- To set a custom app icon, place `app.ico` in `assets/`.
-
-## License
-MIT License
-
-## Contributing
-Issues and pull requests are welcome.
+## 📄 License
+This project is licensed under the MIT License.
