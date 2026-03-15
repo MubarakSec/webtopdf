@@ -1,124 +1,103 @@
+# Web to PDF Toolkit
 
+A single, modern desktop app that extracts URLs from web pages and converts them to PDFs. Built with `tkinter` for a lightweight GUI and Playwright for reliable rendering.
 
-# 🧰 GUI Toolkit: URL Extractor & Webpage to PDF Converter
+## Highlights
+- One app with two workflows: extract links and convert pages to PDFs.
+- Send selected links directly from the extractor to the converter queue.
+- Headless or visible browser mode.
+- Retry handling with partial saves on failures.
+- Clipboard paste, import/export, and deduping.
 
-This repository includes **two standalone Python GUI applications** built with `tkinter`:
+## Features
+- URL extraction with optional same-domain filtering.
+- Multi-select results, copy, save, or push to converter.
+- Batch PDF conversion with progress and log output.
+- Output folder auto-open on completion (optional).
 
-1. 🔗 **URL Extractor** – Extracts all hyperlinks from a given webpage and allows you to save selected links.
-2. 🖨️ **Webpage to PDF Converter** – Converts a list of URLs into PDF files using a headless Chromium browser powered by [Playwright](https://playwright.dev/).
-
----
-
-## 📦 Features
-
-### 🔗 URL Extractor
-- Enter any valid `http://` or `https://` URL.
-- Automatically fetches and lists all anchor links (`<a href=...>`).
-- Lets you select which links to save.
-- Save selected URLs to a `.txt` file.
-
-### 🖨️ Webpage to PDF Converter
-- Input URLs manually or import from a `.txt` file.
-- Converts pages to PDF using Playwright (headless Chromium).
-- Retries failed attempts automatically (configurable).
-- Logs status, errors, and progress.
-- Automatically sanitizes filenames from page titles.
-- Partial saves supported if page load fails.
-
----
-
-## 📷 Screenshots
+## Screenshots
+Screenshots are being updated to reflect the new unified UI.
 
 <img src="images/url_extractor_screenshot2.png" width="500"/>
 <img src="images/pdf_converter_screenshot.png" width="500"/>
 
----
+## Installation
 
-## 🛠️ Installation
-
-### 1. Clone the repository
+1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/url-extractor-pdf-converter.git
-cd url-extractor-pdf-converter
-````
+git clone https://github.com/yourusername/webtopdf.git
+cd webtopdf
+```
 
-### 2. Set up the environment
+2. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 python -m playwright install
 ```
 
----
+## Usage
 
-## 🧾 Dependencies
-
-* `tkinter` (comes with Python)
-* `requests`
-* `beautifulsoup4`
-* `playwright`
-
-You can install them manually with:
+Run the unified app:
 
 ```bash
-pip install requests beautifulsoup4 playwright
-python -m playwright install
+python app.py
 ```
 
----
-
-## 🚀 Usage
-
-### Run URL Extractor
+Optional legacy entry points (open a specific tab):
 
 ```bash
 python url_extractor.py
+python webpage_to_pdf.py
 ```
 
-### Run Webpage to PDF Converter
+### Extract URLs
+1. Enter a webpage URL and select your filters.
+2. Click "Extract Links".
+3. Select links and copy, save, or send to the converter.
 
-```bash
-python webtopdf.py
-```
+### Convert to PDF
+1. Add URLs manually, paste, or import a `.txt` file.
+2. Choose an output directory.
+3. Configure headless mode and retries.
+4. Click "Start Conversion".
 
----
+## Quality (ISO/IEC 25010 Focus)
+- Functional suitability: clear separation of extract vs. convert workflows.
+- Usability: guided layout, consistent actions, and status feedback.
+- Reliability: retries, partial saves, and defensive error handling.
+- Performance efficiency: background workers keep the UI responsive.
+- Maintainability: unified app structure and shared utilities.
+- Portability: runs on Windows, macOS, and Linux with Python + Playwright.
 
-## 📁 Directory Structure
-
+## Project Structure
 ```
 .
-├── url_extractor.py       # GUI app to extract and save hyperlinks
-├── webtopdf.py            # GUI app to convert webpages to PDF
-├── README.md              # You're here
-├── requirements.txt       # List of dependencies
+├── app.py               # Unified GUI app
+├── url_extractor.py     # Optional launcher (opens Extract tab)
+├── webpage_to_pdf.py    # Optional launcher (opens Convert tab)
+├── requirements.txt
+├── images/
+└── README.md
 ```
 
----
-
-## 📌 Notes
-
-* Make sure Playwright is installed properly:
+## Notes
+- Make sure Playwright browsers are installed:
   `python -m playwright install`
-* For URL Extractor, malformed or broken links may result in errors.
-* PDF filenames are sanitized and truncated to avoid OS file path issues.
+- Some pages may require authentication or block headless browsers.
+- Filenames are sanitized and truncated to avoid OS path issues.
+- To set a custom app icon, place `app.ico` in `assets/`.
 
----
-
-## 📄 License
-
+## License
 MIT License
 
----
-
-## 🤝 Contributing
-
-Pull requests and issues are welcome!
-
+## Contributing
+Issues and pull requests are welcome.
